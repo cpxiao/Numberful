@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#3F51B5</color>-->
+    <!--<color name="colorPrimaryDark">#303F9F</color>-->
+
+    <!--背景色，渐变色-->
+    <color name="colorBgTop">#183b5b</color>
+    <color name="colorBgBottom">#1288a5</color>
+
+    <!--计时器颜色-->
+    <color name="colorTime">#E2Ca0a</color>
+    <color name="colorTimeLess10">#f55348</color>
+
+    <!--得分等颜色-->
+    <color name="colorScore">#e1f2f2</color>
+    <color name="colorBestScore">#e1f2f2</color>
+    <color name="colorLevel">#9DEEEE</color>
+    <color name="colorSum">#9DEEEE</color>
+
+    <!--方块背景颜色及字体颜色-->
+    <color name="colorDotBg">#298aac</color>
+    <color name="colorDotText">#f5ebee</color>
+
+    <!--负数方块背景颜色及字体颜色-->
+    <color name="colorDotBg_">#1d5870</color>
+    <color name="colorDotText_">#f5ebee</color>
+
+    <!--选中方块背景颜色及字体颜色-->
+    <color name="colorSelectedDotBg">#C4ffff</color>
+    <color name="colorSelectedDotText">#1a2d37</color>
+
+    <!--连线颜色-->
+    <color name="colorLine">#72a9c6</color>
+
+
+</resources>

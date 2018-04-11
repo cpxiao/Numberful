@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'com.jakewharton.hugo'
+//apply plugin: 'com.antfortune.freeline'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
+
+    defaultConfig {
+        applicationId "com.cpxiao.numberful"
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        flavorDimensions "channel"
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled true  //混淆
+            shrinkResources true // 移除无用的resource文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //多渠道打包
+    productFlavors {
+        gp {}
+    }
+
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+
+    //修改生成的apk名字
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = applicationId +
+                    "_v" + defaultConfig.versionName +
+                    "_" + variant.productFlavors[0].name +
+                    "_" + new Date().format('yyyyMMddHHmm') +
+                    ".apk"
+        }
+    }
+}
+
+dependencies {
+    ext {
+        support_library_version = '27.1.0'
+        google_services_version = '12.0.1'
+    }
+
+    implementation project(":__AndroidUtils:library")
+
+    /**
+     * Ads Start
+     */
+    //友盟统计
+    implementation "com.umeng.analytics:analytics:6.1.4"
+    //Facebook广告
+    implementation "com.facebook.android:audience-network-sdk:4.25.0"
+    //AdMob广告
+    implementation "com.google.firebase:firebase-ads:${google_services_version}"
+    //ZAds SDK 要用到glide，要放在前面几个库的后面
+    implementation "com.github.bumptech.glide:glide:4.0.0-RC1"
+    /**
+     * Ads End
+     */
+
+    implementation "com.android.support:appcompat-v7:${support_library_version}"
+    implementation "com.android.support:support-v4:${support_library_version}"
+    implementation "com.android.support:support-media-compat:${support_library_version}"
+    implementation "com.android.support:recyclerview-v7:${support_library_version}"
+}
+
+//apply plugin: 'com.google.gms.google-services'
